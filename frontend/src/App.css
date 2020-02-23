@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300|Rubik&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+:root{
+  --headfont: 'Rubik', sans-serif;
+  --bodyfont: 'Raleway Light', sans-serif;
+  --thinfont: 'Raleway Light';
+  --white: #ffffff;
+  --offwhite: #f9f9fc;
+  --darkgray: #333333;
+  --gray: #4D4D4D;
+  --lightgray: #999999;
+  --green: #C2E15F;
+  --orange: #FDA333;
+  --purple: #D3A4F9;
+  --red: #fb5344;
+  --pinkred: #FB4485;
+  --blue: #6CE0F1;
+  --salmon: #fa8a90;
+  --salmon-light: #fa9ba1;
+  --cyan : #8afaf4;
+  font-family: var(--bodyfont);
+  color: var(--gray);
+  background-color: var(--offwhite);
+}
+
+html, body, #root{
+  width: 100%;
+  height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: var(-headfont);
+}
+
+#root{
+  display:grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: auto 1fr auto;
+}
