@@ -23,6 +23,7 @@
   --salmon: #fa8a90;
   --salmon-light: #fa9ba1;
   --cyan : #8afaf4;
+  --shadow: #cccccc;
   font-family: var(--bodyfont);
   color: var(--gray);
   background-color: var(--offwhite);
@@ -34,8 +35,17 @@ html, body, #root{
 }
 
 h1, h2, h3, h4, h5, h6{
-  font-family: var(-headfont);
+  font-family: var(--headfont);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.125em;
 }
+
+h1 { font-size: 3.0rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 2.0rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.0rem; }
+h6 { font-size: 0.5rem; }
 
 #root{
   display:grid;
@@ -46,13 +56,20 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .slide {
-  width: 95vw;
-  height: 54vw;
+  width: calc(min(95vw, 168.89vh));
+  height: calc(min(54vw, 95vh));
   grid-area: center;
-  background-color: var(--white);
-  box-shadow: 5px 5px 10px var(--darkgray);
+  box-shadow: 0px 0px 10px var(--shadow);
   background: no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
+  background-color: var(--white);
+}
+
+.centerslide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
