@@ -27,6 +27,7 @@
   font-family: var(--bodyfont);
   color: var(--gray);
   background-color: var(--offwhite);
+  font-size: calc(min(1.235vw, 2.19557vh));
 }
 
 html, body, #root{
