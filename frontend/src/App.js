@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import Slide from './Slide';
 import './App.css';
 
-import { useDispatch } from 'react-redux';
-import { addSlide, slideTimer } from './redux/actions.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { addSlide, slideTimer, clearTimer } from './redux/actions.js';
 import {
   SLIDE_CENTER,
   SLIDE_TWITTER,
 } from './Slide/Types.js';
+import { getTimerID } from './redux/selectors.js';
 
 function CenterSlide(props) {
   return (
@@ -26,6 +27,7 @@ function TimeSlide(props){
 
 function App() {
   const dispatch = useDispatch();
+  const timerID = useSelector(getTimerID);
   useEffect(() => {
     dispatch(addSlide({
       type: SLIDE_CENTER,
@@ -33,7 +35,7 @@ function App() {
         <h1>hi</h1>,
         <h2>wow</h2>,
       ]
-    })); 
+    }));
     dispatch(addSlide({
       type: SLIDE_TWITTER,
       tweet: "it's a tweet",
@@ -43,6 +45,7 @@ function App() {
 
   return (
     <>
+      <button onClick={() => dispatch(clearTimer(timerID))}>Clear timer</button>
       <TimeSlide/>
     </>
   );

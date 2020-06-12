@@ -1,10 +1,11 @@
 import {
   SLIDE_ADD,
   SLIDE_NEXT,
-  SLIDE_TIMER_CLEAR,
+  SLIDE_TIMER_ID,
 } from '../actionTypes.js';
 
 export const slides = (state = {
+  timerID: -1,
   currentSlide: -1,
   slides: [],
 }, action) => {
@@ -25,9 +26,9 @@ export const slides = (state = {
             ? 0
             : state.currentSlide + 1,
       });
-    case SLIDE_TIMER_CLEAR:
+    case SLIDE_TIMER_ID:
       return Object.assign({}, state, {
-        clearTimer: action.id,
+        timerID: action.id,
       });
     default:
       return state;
