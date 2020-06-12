@@ -1,0 +1,2 @@
+export const SLIDE_CENTER = "SLIDE_CENTER";
+export const SLIDE_TWITTER = "SLIDE_TWITTER";

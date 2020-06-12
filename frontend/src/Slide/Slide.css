@@ -1,0 +1,18 @@
+.slide {
+  width: calc(min(95vw, 168.89vh));
+  height: calc(min(54vw, 95vh));
+  grid-area: center;
+  box-shadow: 0px 0px 10px var(--shadow);
+  background: no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-color: var(--white);
+}
+
+.centerslide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
