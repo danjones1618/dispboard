@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Slide from './Slide';
 import './App.css';
 
@@ -27,7 +27,28 @@ function TimeSlide(props){
 
 function App() {
   const dispatch = useDispatch();
-  const timerID = useSelector(getTimerID);
+
+  const ws = useMemo(() => new WebSocket('ws://localhost:3080'), []);
+
+  useEffect(() => {
+    ws.onopen = () => {
+      console.log('connected');
+      ws.send(JSON.stringify({"type": "connect", "presentationId": "test"}));
+      dispatch(slideTimer());
+    }
+
+    ws.onmessage = e => {
+      console.log(e.data);
+      dispatch(addSlide(e.data));
+    }
+
+    ws.onclose = () => {
+      console.log('disconnected');
+    }
+
+  }, [ws]);
+
+  /*const timerID = useSelector(getTimerID);
   useEffect(() => {
     dispatch(addSlide({
       type: SLIDE_CENTER,
@@ -41,11 +62,12 @@ function App() {
       tweet: "it's a tweet",
     }));
     dispatch(slideTimer());
-    return; }, [dispatch]);
+    return;
+  }, [dispatch]);*/
 
   return (
     <>
-      <button onClick={() => dispatch(clearTimer(timerID))}>Clear timer</button>
+      {/*<button onClick={() => dispatch(clearTimer(timerID))}>Clear timer</button>*/}
       <TimeSlide/>
     </>
   );
